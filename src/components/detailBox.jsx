@@ -50,7 +50,7 @@ export default function DetailBox({ product }){
                         <span className="text-sm line-through font-bold text-red-400">
                             ${product.price}
                         </span>
-                        <span className="text-lg line-through font-bold text-gray-900">
+                        <span className="text-lg font-bold text-gray-900">
                             ${(product.price - (product.discountPercentage / 100 * product.price)).toFixed(2)}
                         </span>
                         <span className="text-sm">
