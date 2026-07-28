@@ -80,7 +80,7 @@ export default function DetailBox({ product }){
             {showReviews && (
                 <div>
                    {product.reviews.length === 0 ? (
-                       <p className="text-grey-500 text-sm">No reviews yer</p>
+                       <p className="text-grey-500 text-sm">No reviews yet</p>
                    ): (
                        product.reviews.map((review, index) => {
                                return <Review props={review}/> 

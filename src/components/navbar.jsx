@@ -7,8 +7,10 @@ function Search({search, setSearch}){
         <div >
             <input type="text" name="search" placeholder="Search" onChange={(e) => setSearch(e.target.value)}
             className = "
-                p-2
-                w-50
+                flex-initial
+                md:p-2
+                p-1
+                max-w-100
                 bg-blue-50
                 text-mist-900
                 rounded-sm
@@ -22,7 +24,7 @@ export function Navbar(){
     return( 
         <>
             <nav>
-                <div className="hidden md:flex gap-6">
+                <div className="hidden md:flex gap-6 mr-5">
                     <NavLink
                         to="/"
                         className={({ isActive }) =>
@@ -40,28 +42,21 @@ export function Navbar(){
                     >
                        Order 
                     </NavLink>
-
                 </div>
-                <div>
-                    <button
-                    className="text-center right-1 md:hidden focus:bg-slate-400 p-2 border rounded-sm"
-                    onClick={() => setMenu((prev) => !prev)}
-                    aria-label="Toggle menu"
-                    >
+                <div className="md:hidden float:right overflow-hidden">
+                    <button className="text-16px border-none outline-none p-4" onClick={() => {setMenu(!menu)}}>
                         Menu
                     </button>
-                    {menu && (
-                        <div className="flex flex-col gap-4 mt-4 absolute bg-slate-400 p-4 right-1 top-0
-                            rounded-sm">
-                           <NavLink to="/" onClick={() => setMenu((prev) => !prev)}>
-                           Home
-                           </NavLink>
-                            <NavLink to="order" onClick={() => setMenu((prev) => !prev)}>
-                            Order
-                           </NavLink>
-                        </div>
-                    )}
+                {menu && ( 
+                    <div className="block absolute z-1 bg-slate-200">
+                        <NavLink to="/" className="float:none p-4 decoration-none block" 
+                                onClick={() => {setMenu(!menu)}}>Home</NavLink>
+                        <NavLink to="/order" className="float:none p-4 decoration-none block" 
+                                onClick={() => {setMenu(!menu)}}>Order</NavLink>
+                    </div>
+                )}
                 </div>
+                
             </nav>
         </>
     )
@@ -70,13 +65,12 @@ export function Navbar(){
 export function HomeNavbar({search, setSearch, categories, category, setCategory}){
     return(
             <>
-            <nav className="md:flex items-center justify-between px-6 md:py-4 bg-slate-200 text-gray-900">
-                <img className="top-0 h-20 w-50" src="/pasal_logo.svg" alt=""/>
-                <div className="flex gap-6 text-align-center justify-center">
-                    <Search search={search} setSearch={setSearch}/>
-                    <Navbar /> 
-                </div>
-            </nav>
+            <div className="flex flex-row justify-between items-center">
+                    <h3 className="p-1 bg-slate-400 rounded-sm text-x1">Pasal</h3>
+                 <Search search={search} setSearch={setSearch}/>
+                 <Navbar />
+             </div> 
+            <br/>
             <CategoryList categories={categories} category={category} setCategory={setCategory}/> 
             </>
     )
